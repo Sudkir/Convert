@@ -25,6 +25,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -67,13 +71,6 @@ public class MainActivity extends AppCompatActivity {
 
         //reset Button click switch to select country activity
         reset = findViewById(R.id.btnReset);
-
-
-
-
-
-
-
 
 
         progressBarHolder.setVisibility(View.VISIBLE);
@@ -214,8 +211,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     private void CreateSoftKeyboard(){
-        resCur = findViewById(R.id.resCurBtn);
+
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
         btn3 = findViewById(R.id.btn3);
@@ -229,9 +227,39 @@ public class MainActivity extends AppCompatActivity {
         btnPoint = findViewById(R.id.btnPoint);
         btnDelete = findViewById(R.id.btnDelete);
         myEditText = findViewById(R.id.amount_from);
+        FloatingActionButton fab = findViewById(R.id.fab);
 
-        resCur.setOnClickListener(v -> {
-            getCurrency();
+        fab.setOnClickListener(v -> {
+            //getCurrency();
+            myEditText.setText("");
+            userInput="";
+            currencyRecycler.setLayoutManager(new LinearLayoutManager(this));
+            CurrencyAdapter currencyAdapter = new CurrencyAdapter(this, currencyList);
+
+            currencyRecycler.setAdapter(currencyAdapter);//обновление данных
+            currencyAdapter.notifyDataSetChanged();
+            // Запускаем таймер для обращения на сервер раз в минуту
+            timer = new Timer();
+            timer.scheduleAtFixedRate(new RemindTask(), 0, 60000);
+
+            // Следим за обновлением вводимого текста в edit text
+            amountFrom.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    currencyAdapter.calculateAmount(amountFrom.getText().toString());
+                }
+
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                }
+            });
+
+
+
 
         });
 
