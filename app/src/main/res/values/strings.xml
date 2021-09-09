@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">CurrencyRates</string>
+
+    <!--  Главный экран  -->
+    <string name="head_text">Введите количество средств в рублях:</string>
+    <string name="name">Наименовние валюты</string>
+    <string name="course">Курс</string>
+    <string name="you_get">Вы получите</string>
+    <string name="btnReset">Reset Country</string>
+    <string name="btn7">7</string>
+    <string name="btn8">8</string>
+    <string name="btn9">9</string>
+    <string name="btnDelete">⌫</string>
+    <string name="btn4">4</string>
+    <string name="btn5">5</string>
+    <string name="btn6">6</string>
+    <string name="btnPoint">.</string>
+    <string name="btn1">1</string>
+    <string name="btn2">2</string>
+    <string name="btn3">3</string>
+    <string name="btn0">0</string>
+    <string name="txtTitle"><![CDATA[Currency Conventor & Travel Advice]]></string>
+    <string name="btnNext">Next</string>
+    <string name="RUB_Amt">RUB</string>
+    <string name="txtTitleCAD">CAD $</string>
+
+</resources>
