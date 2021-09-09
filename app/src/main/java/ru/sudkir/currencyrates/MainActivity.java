@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +22,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -64,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
         //reset Button click switch to select country activity
         reset = findViewById(R.id.btnReset);
 
+
+
+
+
+
+
+
+
         progressBarHolder.setVisibility(View.VISIBLE);
 
         currencyList = new ArrayList<>();//список значений курса
@@ -94,6 +106,39 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        // Change the label of the menu based on the state of the app.
+        int nightMode = AppCompatDelegate.getDefaultNightMode();
+        if(nightMode == AppCompatDelegate.MODE_NIGHT_YES){
+            menu.findItem(R.id.night_mode).setTitle(R.string.day_mode);
+        } else{
+            menu.findItem(R.id.night_mode).setTitle(R.string.night_mode);
+        }
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //Check if the correct item was clicked
+        if(item.getItemId()==R.id.night_mode) {
+            // Get the night mode state of the app.
+            int nightMode = AppCompatDelegate.getDefaultNightMode();
+            //Set the theme mode for the restarted activity
+            if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+                AppCompatDelegate.setDefaultNightMode
+                        (AppCompatDelegate.MODE_NIGHT_NO);
+            } else {
+                AppCompatDelegate.setDefaultNightMode
+                        (AppCompatDelegate.MODE_NIGHT_YES);
+            }
+// Recreate the activity for the theme change to take effect.
+            recreate();
+        }
+        return true;
+    }
 
     //обновление курса по таймеру
     private class RemindTask extends TimerTask {

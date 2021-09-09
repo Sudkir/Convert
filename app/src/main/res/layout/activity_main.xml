@@ -59,7 +59,8 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_popup_sync" />
+            app:srcCompat="@android:drawable/ic_popup_sync"
+            android:contentDescription="TODO" />
 
     </LinearLayout>
 
@@ -105,13 +106,14 @@
             app:autoSizeMaxTextSize="12sp"
             app:autoSizeMinTextSize="10sp"
             app:autoSizeTextType="uniform" />
+
     </LinearLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/currency_recycler"
         android:layout_width="match_parent"
-        android:layout_height="476dp"
+        android:layout_height="402dp"
         android:layout_marginStart="7dp"
         android:layout_marginTop="5dp"
         android:scrollbars="vertical" />
@@ -178,5 +180,7 @@
         <Button
             android:id="@+id/btn0"
             android:text="@string/btn0" />
+
     </GridLayout>
+
 </LinearLayout>

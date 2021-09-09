@@ -1,12 +1,11 @@
 <resources>
-    <string name="app_name">CurrencyRates</string>
+    <string name="app_name">Конвертер валют</string>
 
     <!--  Главный экран  -->
     <string name="head_text">Введите количество средств в рублях:</string>
     <string name="name">Наименовние валюты</string>
     <string name="course">Курс</string>
     <string name="you_get">Вы получите</string>
-    <string name="btnReset">Reset Country</string>
     <string name="btn7">7</string>
     <string name="btn8">8</string>
     <string name="btn9">9</string>
@@ -23,5 +22,6 @@
     <string name="btnNext">Next</string>
     <string name="RUB_Amt">RUB</string>
     <string name="txtTitleCAD">CAD $</string>
-
+    <string name="night_mode">Темная тема</string>
+    <string name="day_mode">Светлая тема</string>
 </resources>
